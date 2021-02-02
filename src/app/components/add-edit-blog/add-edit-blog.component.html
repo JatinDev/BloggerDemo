@@ -1,0 +1,21 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+        <label>Blog Name</label>
+        <input type="text" class="form-control" formControlName="blogName">
+    </div>
+    <div class="form-group">
+        <label>Blog Description</label>
+        <textarea class="form-control" formControlName="blogDescription" rows="10" cols="50"></textarea>
+    </div>
+    <div class="form-group">
+        <label>Blog Created</label>
+        <label class="form-control">{{currentDate | date }}</label>
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-success" [disabled]="!form.valid">Submit</button>
+        <div style="margin: 0px 30px;" class="spinner-border text-primary" role="status" *ngIf="Saving">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+
+</form>

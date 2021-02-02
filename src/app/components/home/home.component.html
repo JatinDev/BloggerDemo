@@ -1,0 +1,38 @@
+<div class="row" style="width: 800px;    margin: 20px;">
+    <div class="col-md-4" style="text-align: right">
+        Add new blog -
+    </div>
+    <div class="col-md-4">
+        <a class="btn btn-primary" (click)="NavigateToBlogAddEdit()">+ Add</a>
+    </div>
+    <div class="col-md-4">
+        <select id="orderBy" class="form-control" (change)="OrberByChange($event.target.value)">
+            <option value="0">Ascending </option>
+            <option value="1">Descending </option>
+        </select>
+    </div>
+</div>
+
+<table class="table table-striped" style="width: 1000px;" *ngIf="allBlogs.length > 0">
+    <thead>
+        <tr>
+            <th scope="col">#Id</th>
+            <th scope="col">Blog Name</th>
+            <th scope="col">Blog Description</th>
+            <th scope="col">Blog Created On</th>
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let obj of allBlogs">
+            <th scope="row">{{obj.blogId }}</th>
+            <td>{{obj.blogName }}</td>
+            <td>{{obj.blogDescription }}</td>
+            <td>{{obj.createdOn | date }}</td>
+            <td>
+                <a (click)="ActionAddEdit(obj.blogId, 1)" class="customAction">Edit</a> &nbsp;&nbsp;|&nbsp;&nbsp;
+                <a (click)="ActionAddEdit(obj.blogId, 2)" class="customAction">Delete</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
